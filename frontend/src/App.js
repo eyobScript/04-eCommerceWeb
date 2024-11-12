@@ -8,7 +8,7 @@ function App() {
     <Header />
     <main>
       <Container>
-        <h1>welcome to eyob shop</h1>
+        <h1>welcome to eShop</h1>
       </Container>
     </main>
     <Footer />
