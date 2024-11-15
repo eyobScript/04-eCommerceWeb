@@ -10,9 +10,9 @@ function Product( { product } ) {
       />
       </a>
       <Card.Body>
-      <a href={`/product/${product._id}`}>
+      <a href={`/product/${product._id}` } className="text-decoration-none">
       <Card.Title as='div'>
-       <strong>{product.name}</strong>
+       <strong className='text-d'>{product.name}</strong>
       </Card.Title>
       </a>
       <Card.Text as='div'>
