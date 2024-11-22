@@ -6,12 +6,12 @@ import axios from "axios";
 function HomeScreen() {
   const [products, setProduct] = useState([]);
   useEffect(() => {
-    async function fetchProduct() {
+    async function fetchProducts() {
       const { data } = await axios.get("/api/products");
 
       setProduct(data);
     }
-    fetchProduct();
+    fetchProducts();
   }, []);
 
   return (
