@@ -1,0 +1,14 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "\tMERN shopping cart app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server"
+  },
+  "author": "Eyob Mulugeta",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.4"
+  }
+}
