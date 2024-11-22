@@ -1,20 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Card, ListGroup, Image, Row, Col, Button } from "react-bootstrap";
 import Rating from "../Component/Rating/Rating";
-import products from "../products";
+import axios from "axios";
 
 function ProductScreen() {
-  const { id } = useParams(); // Use the useParams hook to get the product id from the URL
-  const product = products.find((p) => p._id === id);
+  const [product, setProduct] = useState();
+  const { id } = useParams(); 
 
+  // Fetch product data when the component mounts or when `id` changes
+  useEffect(() => {
+    async function fetchProduct() {
+      try {
+        const { data } = await axios.get(`/api/products/${id}`);
+        setProduct(data);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+        setProduct({});
+      }
+    }
+
+    if (id) {
+      fetchProduct();
+    }
+  }, [id]); 
+
+  // If no product is found, show a message
   if (!product) {
-    return <div>Product not found</div>; // Add a fallback if product is not found
+    return <div>Product not found</div>;
   }
 
   return (
     <>
-      <Link to="/">Go Back</Link>
+      <Link className='btn btn-light my-3' to="/">Go Back</Link>
       <Row>
         <Col md={6}>
           <Image src={product.image} alt={product.name} fluid />
