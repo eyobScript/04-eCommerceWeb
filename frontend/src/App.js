@@ -8,7 +8,7 @@ import ProductScreen from "./screen/ProductScreen";
 
 function App() {
   return (
-    <Router>
+    <Router future={{ v7_relativeSplatPath: true }}>
       <Header />
       <main className="py-3">
         <Container>
