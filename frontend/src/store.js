@@ -1,4 +1,4 @@
-import { createStore, combineReducers } from 'redux'
+import { legacy_createStore as createStore , combineReducers } from 'redux';
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension' 
 
