@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from "axios";
 import {
   PRODUCT_LIST_FAIL,
   PRODUCT_LIST_REQUEST,
@@ -6,13 +6,19 @@ import {
 } from "../constants/productConstants";
 
 export const listProduct = async (dispatch) => {
-    try {
-        dispatch({ typ: PRODUCT_LIST_REQUEST});
-        
-        const { data } = await axios.request('/products/api');
+  try {
+    dispatch({ typ: PRODUCT_LIST_REQUEST });
 
-        dispatch( { type: PRODUCT_LIST_SUCCESS});
-    } catch (error) {
-        
-    }
-}
+    const { data } = await axios.request("/api/products");
+
+    dispatch({
+      type: PRODUCT_LIST_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_LIST_FAIL,
+      payload: error.response && error.response.data.massage,
+    });
+  }
+};
