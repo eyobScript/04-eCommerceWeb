@@ -1,4 +1,4 @@
-export function productReducer(state = { product: [] }, action) {
+export function productListReducer(state = { product: [] }, action) {
   // Implement for product reducer
 
   switch (action.type) {
