@@ -21,7 +21,9 @@
     "express": "^4.21.1",
     "express-async-handler": "^1.2.0",
     "mongodb": "^6.11.0",
-    "mongoose": "^8.8.2"
+    "mongoose": "^8.8.2",
+    "react-scripts": "^5.0.1",
+    "webpack": "^5.96.1"
   },
   "devDependencies": {
     "concurrently": "^9.1.0",
