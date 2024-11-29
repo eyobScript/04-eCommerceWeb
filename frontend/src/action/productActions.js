@@ -18,7 +18,10 @@ export const listProduct = async (dispatch) => {
   } catch (error) {
     dispatch({
       type: PRODUCT_LIST_FAIL,
-      payload: error.response && error.response.data.massage,
+      payload:
+        error.response && error.response.data.massage
+          ? error.response.data.massage
+          : error.response,
     });
   }
 };
