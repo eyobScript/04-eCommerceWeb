@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Container } from "react-bootstrap";
-import Header from "./Component/Header/Header";
-import Footer from "./Component/Footer/Footer";
-import HomeScreen from "./screen/HomeScreen";
-import ProductScreen from "./screen/ProductScreen";
-import CartScreen from "./screen/CartScreen";
+import Header from "./Component/Header/Header.jsx";
+import Footer from "./Component/Footer/Footer.jsx";
+import HomeScreen from "./screen/HomeScreen.js";
+import ProductScreen from "./screen/ProductScreen.js";
+import CartScreen from "./screen/CartScreen.js";
 
 function App() {
   return (

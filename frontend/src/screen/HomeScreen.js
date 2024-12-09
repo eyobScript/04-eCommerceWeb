@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col } from "react-bootstrap";
-import Product from "../Component/Product/Product";
-import Message from "../Component/Message/Message";
-import Loader from "../Component/Loader/Loader";
+import Product from "../Component/Product/Product.js";
+import Message from "../Component/Message/Message.js";
+import Loader from "../Component/Loader/Loader.js";
 import axios from "axios";
-import { listProduct } from "../action/productActions";
+import { listProduct } from "../action/productActions.js";
 
 function HomeScreen() {
   const dispatch = useDispatch();

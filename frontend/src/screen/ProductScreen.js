@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Card, ListGroup, Image, Row, Col, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import Rating from "../Component/Rating/Rating";
-import { listProductDetails } from "../action/productActions";
-import Message from "../Component/Message/Message";
-import Loader from "../Component/Loader/Loader";
+import Rating from "../Component/Rating/Rating.js";
+import { listProductDetails } from "../action/productActions.js";
+import Message from "../Component/Message/Message.js";
+import Loader from "../Component/Loader/Loader.js";
 
 function ProductScreen({ history }) {
   const [qty, setQty] = useState(0);
