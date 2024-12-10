@@ -8,11 +8,14 @@ import {
   PRODUCT_LIST_SUCCESS,
 } from "../constants/productConstants.js";
 
+// src/action/productActions.js
 export const listProduct = () => async (dispatch) => {
   try {
-    dispatch({ typ: PRODUCT_LIST_REQUEST });
+    dispatch({ type: PRODUCT_LIST_REQUEST }); // Fix typo here
 
-    const { data } = await axios.request("/api/products");
+    const { data } = await axios.get("/api/products");
+
+    console.log("Fetched Products:", data);
 
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
@@ -22,30 +25,35 @@ export const listProduct = () => async (dispatch) => {
     dispatch({
       type: PRODUCT_LIST_FAIL,
       payload:
-        error.response && error.response.data.massage
-          ? error.response.data.massage
-          : error.response,
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
     });
   }
 };
 
+// Action to fetch product details by ID
 export const listProductDetails = (id) => async (dispatch) => {
   try {
-    dispatch({ typ: PRODUCT_DETAILS_REQUEST });
+    // Correctly dispatch the request action
+    dispatch({ type: PRODUCT_DETAILS_REQUEST });
 
-    const { data } = await axios.request(`/api/products/${id}`);
+    // Fetch data using axios.get
+    const { data } = await axios.get(`/api/products/${id}`);
 
+    // Dispatch success action
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
       payload: data,
     });
   } catch (error) {
+    // Dispatch failure action with the correct error message
     dispatch({
       type: PRODUCT_DETAILS_FAIL,
       payload:
-        error.response && error.response.data.massage
-          ? error.response.data.massage
-          : error.response,
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
     });
   }
 };

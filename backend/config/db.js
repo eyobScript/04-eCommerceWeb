@@ -2,10 +2,16 @@ import mongoose from "mongoose";
 
 async function connectDB() {
   try {
-    const conn = await mongoose.connect(process.env.MONG0_URI); 
-    console.log(`MongoDB Connected: ${conn.connection.host}`.cyan.underline);
+    // Connect to MongoDB using the correct environment variable key
+    const conn = await mongoose.connect(process.env.MONGO_URI, {
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
+      useCreateIndex: true,
+    });
+
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
-    console.log(`Error: ${error.message}`.cyan.red.underline.bold);
+    console.log(`Error: ${error.message}`);
     process.exit(1);
   }
 }

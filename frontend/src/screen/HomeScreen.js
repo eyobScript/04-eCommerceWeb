@@ -1,25 +1,31 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Row, Col } from "react-bootstrap";
-import Product from "../Component/Product/Product.js";
-import Message from "../Component/Message/Message.js";
-import Loader from "../Component/Loader/Loader.js";
-import axios from "axios";
-import { listProduct } from "../action/productActions.js";
+import React, { useEffect } from 'react'
+import { Link, useParams } from 'react-router-dom' // Import useParams hook
+import { useDispatch, useSelector } from 'react-redux'
+import { Row, Col } from 'react-bootstrap'
+import Product from '../Component/Product/Product.js'
+import Message from '../Component/Message/Message.js'
+import Loader from '../Component/Loader/Loader.js'
+import { listProduct } from '../action/productActions.js'
 
-function HomeScreen() {
-  const dispatch = useDispatch();
+const HomeScreen = () => {
+  // Use useParams to get parameters from the URL
+  const { keyword, pageNumber = 1 } = useParams()
 
-  const productList = useSelector((state) => state.productList);
-  const { loading, error, products } = productList;
+  const dispatch = useDispatch()
+
+  const productList = useSelector((state) => state.productList)
+  const { loading, error, products, page, pages } = productList
 
   useEffect(() => {
-    dispatch(listProduct());
-  }, [dispatch]);
+    dispatch(listProduct(keyword, pageNumber))
+  }, [dispatch, keyword, pageNumber])
 
   return (
     <>
-      <h1>Latest Product</h1>
+      <Link to='/' className='btn btn-light'>
+        Go Back
+      </Link>
+      <h1>Latest Products</h1>
       {loading ? (
         <Loader />
       ) : error ? (
@@ -34,7 +40,7 @@ function HomeScreen() {
         </Row>
       )}
     </>
-  );
+  )
 }
 
-export default HomeScreen;
+export default HomeScreen

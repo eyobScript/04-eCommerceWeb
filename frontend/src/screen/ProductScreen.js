@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Card, ListGroup, Image, Row, Col, Button } from "react-bootstrap";
+import { Card, ListGroup, Image, Row, Col, Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Rating from "../Component/Rating/Rating.js";
 import { listProductDetails } from "../action/productActions.js";
@@ -13,11 +13,16 @@ function ProductScreen({ history }) {
 
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
-
+  
   const { id } = useParams();
+
   useEffect(() => {
+
+ console.log("PRODUCT" + product); // ------------------------------
     dispatch(listProductDetails(id));
-  }, [dispatch, id]);
+  }, [dispatch, id, product]);
+
+ console.log("PRODUCT" + product); // ---------------------------------
 
 function addToCartHandler() {
      history.push(`/cart/${id}?qty=${qty}`);
